@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "b5d22a9e-817d-456b-ad68-a887e927760a",
+		"name": "project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bio info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://torre.bio/api/bios/:username ",
+					"protocol": "https",
+					"host": [
+						"torre",
+						"bio"
+					],
+					"path": [
+						"api",
+						"bios",
+						":username "
+					],
+					"variable": [
+						{
+							"key": "username ",
+							"value": "fabiostovarr"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opportunity info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://torre.co/api/opportunities/:id",
+					"protocol": "https",
+					"host": [
+						"torre",
+						"co"
+					],
+					"path": [
+						"api",
+						"opportunities",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search opportunities",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://search.torre.co/opportunities/_search/?aggregate=true",
+					"protocol": "https",
+					"host": [
+						"search",
+						"torre",
+						"co"
+					],
+					"path": [
+						"opportunities",
+						"_search",
+						""
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "offset",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "size",
+							"disabled": true
+						},
+						{
+							"key": "aggregate",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search people",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://search.torre.co/people/_search/?offset=offset&size=size&aggregate=aggregate",
+					"protocol": "https",
+					"host": [
+						"search",
+						"torre",
+						"co"
+					],
+					"path": [
+						"people",
+						"_search",
+						""
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "offset"
+						},
+						{
+							"key": "size",
+							"value": "size"
+						},
+						{
+							"key": "aggregate",
+							"value": "aggregate"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
