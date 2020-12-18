@@ -64,8 +64,17 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"or\": [\n        {\n            \"skill/role\": {\n                \"text\": \"papa\",\n                \"experience\": \"potential-to-develop\"\n            }\n        },\n        {\n            \"status\": {\n                \"code\": \"closed\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://search.torre.co/opportunities/_search/?aggregate=true",
+					"raw": "https://search.torre.co/opportunities/_search/?aggregate=true&size=1",
 					"protocol": "https",
 					"host": [
 						"search",
@@ -84,13 +93,12 @@
 							"disabled": true
 						},
 						{
-							"key": "size",
-							"value": "size",
-							"disabled": true
-						},
-						{
 							"key": "aggregate",
 							"value": "true"
+						},
+						{
+							"key": "size",
+							"value": "1"
 						}
 					]
 				}
@@ -100,10 +108,19 @@
 		{
 			"name": "Search people",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"or\": [\n        {\n            \"opento\": {\n                \"term\": \"full-time-employment\"\n            }\n        },\n        {\n            \"skill/role\": {\n                \"text\": \"fabio\",\n                \"experience\": \"1-plus-year\"\n            }\n        },\n        {\n            \"name\": {\n                \"term\": \"fabio\"\n            }\n        },\n        {\n            \"organization\": {\n                \"term\": \"fabio\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://search.torre.co/people/_search/?offset=offset&size=size&aggregate=aggregate",
+					"raw": "https://search.torre.co/people/_search/?size=1&aggregate=true",
 					"protocol": "https",
 					"host": [
 						"search",
@@ -118,15 +135,16 @@
 					"query": [
 						{
 							"key": "offset",
-							"value": "offset"
+							"value": "offset",
+							"disabled": true
 						},
 						{
 							"key": "size",
-							"value": "size"
+							"value": "1"
 						},
 						{
 							"key": "aggregate",
-							"value": "aggregate"
+							"value": "true"
 						}
 					]
 				}
