@@ -1,0 +1,16 @@
+HTTrack3.49-2 launched on Fri, 18 Dec 2020 17:49:19 at https://www.torre.co/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/*
+(webhttrack -q -%i -w https://www.torre.co/ -O "/home/fabiotovar/websites/test" -n -%P -N0 -s2 -p7 -D -a -K0 -c4 -%k -A25000 -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -%s -%u )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+17:49:30	Error: 	"Not Found" (404) at link https://fonts.gstatic.com/ (from https://www.torre.co/)
+17:49:31	Error: 	"Not Found" (404) at link https://cdn.segment.com/ (from https://www.torre.co/)
+17:49:33	Error: 	"Forbidden" (403) at link https://browser.sentry-cdn.com/ (from https://www.torre.co/)
+17:49:34	Warning: 	Moved Permanently for https://www.google-analytics.com/
+17:49:34	Warning: 	File has moved from https://www.google-analytics.com/ to https://www.google.com/analytics/
+
+HTTrack Website Copier/3.49-2 mirror complete in 16 seconds : 20 links scanned, 9 files written (991219 bytes overall) [342833 bytes received at 21427 bytes/sec], 908436 bytes transferred using HTTP compression in 8 files, ratio 27%, 1.3 requests per connection
+(3 errors, 2 warnings, 0 messages)
