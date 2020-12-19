@@ -1,11 +1,13 @@
-import express from "express";
-import controllers from "./loaders/controllers.js";
-import middlewares from "./loaders/middlewares.js";
-import morgan from "morgan";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
-
+const dotenv = require("dotenv");
 dotenv.config({ path: `./.env.${process.env.NODE_ENV}` });
+
+const express = require("express");
+const controllers = require("./loaders/controllers.js");
+const middlewares = require("./loaders/middlewares.js");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+
+const models = require("./models/index.js");
 
 const app = express();
 app.use(morgan("combined"));
@@ -26,3 +28,12 @@ middlewares.forEach(async (mid) => {
   const { middleware } = await mid;
   app.use(middleware);
 });
+
+(async () => {
+  try {
+    await models.sequelize.authenticate();
+    console.log("Connection with DB has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+})();
