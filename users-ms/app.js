@@ -1,6 +1,6 @@
 import express from "express";
-import controllers from "../companies/loaders/controllers.js";
-import middlewares from "../companies/loaders/middlewares.js";
+import controllers from "./loaders/controllers.js";
+import middlewares from "./loaders/middlewares.js";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
@@ -16,7 +16,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
-
+ 
 controllers.forEach(async (controller) => {
   const { base, router } = await controller;
   app.use(`/${base}`, router);

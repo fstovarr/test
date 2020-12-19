@@ -1,0 +1,54 @@
+version: "3.3"
+
+services:
+  api-gateway:
+    container_name: api-gateway
+    image: api-gateway
+    build: "api-gateway/"
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8080:8080
+  users-ms:
+    container_name: users-ms
+    image: users-ms
+    build: "users-ms/"
+    environment:
+      NODE_ENV: development
+    ports:
+      - 4000:4000
+    depends_on:
+      - api-gateway
+      - users-db
+  companies-ms:
+    container_name: companies-ms
+    image: companies-ms
+    build: "companies-ms/"
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    depends_on:
+      - api-gateway
+      - companies-db
+  users-db:
+    container_name: users-db
+    image: mysql
+    ports:
+      - 5555:3306
+    volumes:
+      - users-db:/var/lib/mysql
+    env_file:
+      - .env.users-db
+  companies-db:
+    container_name: companies-db
+    image: mysql
+    ports:
+      - 5005:3306
+    volumes:
+      - companies-db:/var/lib/mysql
+    env_file:
+      - .env.companies-db
+volumes:
+  companies-db:
+  users-db:
