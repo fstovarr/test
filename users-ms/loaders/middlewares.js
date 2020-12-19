@@ -1,14 +1,14 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 const dir = `${path.resolve()}/middlewares/`;
 const ext = ".js";
 
-export default fs
+module.exports = fs
   .readdirSync(dir)
   .filter((file) => path.extname(file) === ext)
   .map(async (file) => {
-    const middleware = (await import(`${dir}/${file}`)).default;
+    const middleware = require(`${dir}/${file}`);
 
     return {
       middleware,

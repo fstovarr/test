@@ -1,11 +1,11 @@
-import fs from "fs";
-import path from "path";
-import express from "express";
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
 
 const dir = `${path.resolve()}/controllers/`;
 const ext = ".js";
 
-export default fs
+module.exports = fs
   .readdirSync(dir)
   .filter((file) => path.extname(file) === ext)
   .map(async (file) => {
