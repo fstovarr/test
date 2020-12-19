@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("emails_users", {
-      id: {
+      email_user_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

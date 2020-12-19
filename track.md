@@ -12,4 +12,6 @@ The time recorded in the next table is in Universal Time (UTC).
 |Dec 19| 2:00 | 3:00 | Design the system architecture and database structure |
 |Dec 19| 3:00 | 5:00 | Implement the basic structure of the repo |
 |Dec 19| 15:00 | 16:00 | Finish microservices initialization |
-|Dec 19| 16:00 | 17:00 | Dockerize services |
+|Dec 19| 16:00 | 18:00 | Dockerize services |
+|Dec 19| 18:00 | 21:00 | Create migrations in microservices |
+|Dec 19| 18:00 | 21:00 | Create migrations in microservices |

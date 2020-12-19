@@ -5,6 +5,8 @@ services:
     container_name: api-gateway
     image: api-gateway
     build: "api-gateway/"
+    volumes:
+      - ./api-gateway/:/app
     environment:
       NODE_ENV: development
     ports:
@@ -17,6 +19,8 @@ services:
       NODE_ENV: development
     ports:
       - 4000:4000
+    expose:
+      - 4000
     volumes:
       - ./users-ms/:/app
     depends_on:
@@ -30,6 +34,8 @@ services:
       NODE_ENV: development
     ports:
       - 3000:3000
+    expose:
+      - 3000
     volumes:
       - ./companies-ms/:/app
     depends_on:
@@ -51,6 +57,8 @@ services:
     image: mysql
     ports:
       - 5005:3306
+    expose:
+      - 3306
     volumes:
       - companies-db:/var/lib/mysql
     env_file:
