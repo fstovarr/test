@@ -17,6 +17,8 @@ services:
       NODE_ENV: development
     ports:
       - 4000:4000
+    volumes:
+      - ./users-ms/:/app
     depends_on:
       - api-gateway
       - users-db
@@ -28,12 +30,16 @@ services:
       NODE_ENV: development
     ports:
       - 3000:3000
+    volumes:
+      - ./companies-ms/:/app
     depends_on:
       - api-gateway
       - companies-db
   users-db:
     container_name: users-db
     image: mysql
+    expose:
+      - 3306
     ports:
       - 5555:3306
     volumes:
