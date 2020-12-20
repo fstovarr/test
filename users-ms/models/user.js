@@ -4,7 +4,7 @@ const { Model } = require("sequelize");
 const sha256 = require("crypto");
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Users extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // console.log("ASSOCIATE ", models);
-      // User.hasMany(models.emails_users);
+      Users.hasMany(models.emails_users, {
+        foreignKey: "user_id",
+        targetKey: "user_id",
+        constraints: false,
+        foreignKeyConstraint: false
+      });
     }
 
     calculate_digest(digest) {
@@ -28,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.password_digest === password_digest;
     }
   }
-  User.init(
+  Users.init(
     {
       user_id: {
         type: DataTypes.INTEGER,
@@ -61,5 +66,10 @@ module.exports = (sequelize, DataTypes) => {
       ],
     }
   );
-  return User;
+
+  Users.beforeCreate(async (user) => {
+    user.password_digest = user.calculate_digest(user.password_digest);
+  });
+
+  return Users;
 };

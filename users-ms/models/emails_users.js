@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       EmailsUsers.belongsTo(models.users, {
         foreignKey: "user_id",
-        targetKey: "user_id",
+        sourceKey: "user_id",
       });
     }
   }

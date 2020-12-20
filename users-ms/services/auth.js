@@ -8,9 +8,11 @@ module.exports = class Auth {
       { user_id, first_name, last_name },
       process.env.JWT_SECRET,
       {
+        algorithm: "HS384",
         audience: process.env.JWT_AUDIENCE,
         issuer: process.env.JWT_ISSUER,
         subject: process.env.JWT_SUBJECT_AUTH,
+        expiresIn: "12h",
       }
     );
   }
