@@ -1,5 +1,8 @@
 "use strict";
 const { Model } = require("sequelize");
+
+const { search } = require("../lib/http");
+
 module.exports = (sequelize, DataTypes) => {
   class companies extends Model {
     /**
@@ -20,6 +23,33 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "location_id",
         sourceKey: "location_id",
       });
+    }
+
+    static async searchInAPI(params, limit = 10, offset = 0) {
+      const {
+        data: { results },
+      } = await search.post(
+        "/opportunities/_search/",
+        {
+          or: [{ organization: { term: params.name } }],
+        },
+        {
+          params: {
+            size: limit,
+            offset,
+          },
+        }
+      );
+
+      const res = results
+        .map((res) => res.organizations)
+        .flat()
+        .reduce((prev, curr) => {
+          prev[curr.id] = curr;
+          return prev;
+        }, {});
+
+      return Object.values(res);
     }
   }
   companies.init(

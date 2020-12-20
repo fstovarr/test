@@ -11,4 +11,9 @@ module.exports = class Company {
     const { data } = await companies.post("/companies/", company);
     return data;
   }
+
+  static async search(name) {
+    const { data } = await companies.get(`/companies/search?name=${name}`);
+    return data;
+  }
 };

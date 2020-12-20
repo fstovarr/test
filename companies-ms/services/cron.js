@@ -1,6 +1,5 @@
 const schedule = require("node-schedule");
 const Opportunities = require("../models/opportunities");
-const { Op } = require("sequelize");
 
 const {
   companies,

@@ -7,8 +7,15 @@ const index = async (req, res, nex) => {
 
 const create = async (req, res, next) => {
   const { user_id } = req.user;
+  console.log("USER_ID ", user_id, req.body);
   const response = await Company.create({ ...req.body, user_id });
   res.json(response);
+};
+
+const search = async (req, res, next) => {
+  const { name } = req.query;
+  const companies = await Company.search(name);
+  res.json(companies);
 };
 
 module.exports = [
@@ -23,4 +30,5 @@ module.exports = [
     ],
   },
   { path: "/", method: "get", controller: index },
+  { path: "/search", method: "get", controller: search },
 ];

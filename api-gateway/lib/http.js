@@ -10,6 +10,6 @@ module.exports = {
   }),
   companies: axios.create({
     baseURL: process.env.URL_COMPANIES_MS,
-    timeout: 300,
+    timeout: 5000,
   }),
 };

@@ -25,6 +25,15 @@ const signup = async (req, res, next) => {
   res.json({ token });
 };
 
+const validate = async (req, res, next) => {
+  const users = await emails_users.findOne({
+    where: { email: req.body.email, active: true },
+  });
+  if (users === null) throw { status: 404, message: "Email don't found" };
+  
+  res.status(200).json({});
+};
+
 module.exports = [
   {
     path: "/login",
@@ -36,4 +45,5 @@ module.exports = [
     method: "post",
     controller: signup,
   },
+  { path: "/validate", method: "post", controller: validate },
 ];

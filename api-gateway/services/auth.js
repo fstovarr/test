@@ -7,4 +7,7 @@ module.exports = class Auth {
   signup(data) {
     return users.post("/auth/signup", data);
   }
+  validate(email) {
+    return users.post("/auth/validate", { email });
+  }
 };

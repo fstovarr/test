@@ -15,19 +15,19 @@ module.exports = (sequelize, DataTypes) => {
       // console.log("ASSOCIATE ", models);
       Users.hasMany(models.emails_users, {
         foreignKey: "user_id",
-        targetKey: "user_id"
+        targetKey: "user_id",
       });
     }
 
-    calculate_digest(digest) {
+    calculateDigest(digest) {
       return sha256
         .createHash("sha256")
         .update(digest.toLowerCase() + process.env.SALT)
         .digest("hex");
     }
 
-    validate_digest(digest) {
-      const password_digest = this.calculate_digest(digest);
+    validateDigest(digest) {
+      const password_digest = this.calculateDigest(digest);
       return this.password_digest === password_digest;
     }
   }
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Users.beforeCreate(async (user) => {
-    user.password_digest = user.calculate_digest(user.password_digest);
+    user.password_digest = user.calculateDigest(user.password_digest);
   });
 
   return Users;

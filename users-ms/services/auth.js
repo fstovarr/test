@@ -25,7 +25,7 @@ module.exports = class Auth {
 
     if (email_user === null) throw { status: 404, message: "Email not found" };
 
-    if (email_user.user.validate_digest(digest) === false)
+    if (email_user.user.validateDigest(digest) === false)
       throw { status: 401, message: "Invalid password" };
 
     return Promise.resolve(this.generateToken(email_user.user));

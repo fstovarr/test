@@ -10,8 +10,8 @@ const signin = async (req, res, nex) => {
   res.json(data);
 };
 
-const signout = async (req, res, nex) => {
-  const { data } = await authService.signup(req.body);
+const validate = async (req, res, nex) => {
+  const { data } = await authService.validate(req.body.email);
   res.json(data);
 };
 
@@ -43,13 +43,10 @@ module.exports = [
     public: true,
   },
   {
-    path: "/signout",
-    validators: (body) => [
-      body("email").isEmail().normalizeEmail(),
-      body("password").isHash(["sha256"]),
-    ],
+    path: "/validate",
+    validators: (body) => [body("email").isEmail().normalizeEmail()],
     public: true,
-    controller: signout,
+    controller: validate,
     method: "post",
   },
 ];
