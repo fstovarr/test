@@ -19,15 +19,15 @@ app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
 
-controllers.forEach(async (controller) => {
-  const { base, router } = await controller;
+controllers.forEach(({ base, router }) => {
   app.use(`/${base}`, router);
 });
 
-middlewares.forEach(async (mid) => {
-  const { middleware } = await mid;
+middlewares.forEach(({ middleware }) => {
   app.use(middleware);
 });
+
+const worker = require("./workers/worker");
 
 (async () => {
   try {

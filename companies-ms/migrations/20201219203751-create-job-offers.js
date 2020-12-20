@@ -4,9 +4,8 @@ module.exports = {
     await queryInterface.createTable("job_offers", {
       job_offer_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       company_id: {
         type: Sequelize.INTEGER,
@@ -16,8 +15,13 @@ module.exports = {
         },
         allowNull: false,
       },
-      slug: {
-        type: Sequelize.STRING,
+      active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
+      opened: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       createdAt: {

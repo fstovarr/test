@@ -6,7 +6,6 @@ module.exports = {
       await queryInterface.createTable("companies", {
         company_id: {
           allowNull: false,
-          autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
@@ -16,14 +15,6 @@ module.exports = {
           references: {
             key: "location_id",
             model: { tableName: "locations" },
-          },
-        },
-        team_id: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-          references: {
-            key: "team_id",
-            model: { tableName: "teams" },
           },
         },
         user_id: {
@@ -37,6 +28,9 @@ module.exports = {
         updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,
+        },
+        reputation_avg: {
+          type: Sequelize.DOUBLE,
         },
       });
 

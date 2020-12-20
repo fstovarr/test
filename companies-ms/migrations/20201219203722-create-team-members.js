@@ -14,12 +14,12 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        team_id: {
+        company_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
           references: {
-            key: "team_id",
-            model: { tableName: "teams" },
+            key: "company_id",
+            model: { tableName: "companies" },
           },
         },
         createdAt: {
