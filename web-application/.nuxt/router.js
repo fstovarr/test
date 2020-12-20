@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _2f49ba18 = () => interopDefault(import('../pages/auth/index.vue' /* webpackChunkName: "pages/auth/index" */))
 const _79c8703a = () => interopDefault(import('../pages/company/index.vue' /* webpackChunkName: "pages/company/index" */))
-const _0e1d45a2 = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _09f18c16 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -24,25 +24,25 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/auth",
+    component: _2f49ba18,
+    name: "auth___es"
+  }, {
     path: "/company",
     component: _79c8703a,
     name: "company___es"
-  }, {
-    path: "/auth/login",
-    component: _0e1d45a2,
-    name: "auth-login___es"
   }, {
     path: "/en/",
     component: _09f18c16,
     name: "index___en"
   }, {
+    path: "/en/auth",
+    component: _2f49ba18,
+    name: "auth___en"
+  }, {
     path: "/en/company",
     component: _79c8703a,
     name: "company___en"
-  }, {
-    path: "/en/auth/login",
-    component: _0e1d45a2,
-    name: "auth-login___en"
   }, {
     path: "/",
     component: _09f18c16,

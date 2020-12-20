@@ -1,7 +1,7 @@
 import { sha256 } from "js-sha256";
 
 export const actions = {
-  initState({ commit, dispatch }) {
+  initState({ commit }) {
     commit("setToken", this.$cookiz.get("token"));
   },
   async login({ commit }, { email, password }) {
@@ -16,7 +16,7 @@ export const actions = {
         password: password_digest,
       });
 
-      commit("setToken", { token });
+      commit("setToken", token);
 
       return Promise.resolve(token);
     } catch (error) {
@@ -24,18 +24,17 @@ export const actions = {
     }
   },
   async signup(
-    { commit },
+    { commit, dispatch },
     { password, name, email, location_id, company_id, description }
   ) {
     try {
-      console.log(data);
       const password_digest = sha256
         .create()
         .update(password)
         .hex();
-      const name = name.split(" ");
+      const splittedName = name.split(" ");
       const { token } = await this.$axios.$post("/auth/signup", {
-        first_name: name[0],
+        first_name: splittedName[0],
         password: password_digest,
         email: email,
       });
@@ -44,11 +43,15 @@ export const actions = {
 
       commit("setToken", token);
 
-      await dispatch("company/create", {
-        location_id,
-        company_id,
-        description,
-      });
+      await dispatch(
+        "company/create",
+        {
+          location_id,
+          company_id,
+          description,
+        },
+        { root: true }
+      );
 
       return Promise.resolve(token);
     } catch (error) {
@@ -77,8 +80,6 @@ export const getters = {
 
 export const mutations = {
   setToken(state, token) {
-    console.log("TOKEN ", token);
-
     if (token !== undefined) {
       this.$cookiz.set("token", token);
     } else {

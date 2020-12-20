@@ -22,23 +22,22 @@ app.listen(process.env.PORT, () => {
 
 let publicRoutes = [];
 
-app.use(
-  jwt({
-    secret: process.env.JWT_SECRET,
-    algorithms: ["HS384"],
-  }).unless({
-    path: [
-      "/auth/signin",
-      "/auth/signup",
-      "/auth/validate/",
-      "/companies/search",
-    ],
-  })
-);
+const checkJWT = jwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ["HS384"],
+  credentialsRequired: false,
+}).unless({
+  path: [
+    "/auth/signin",
+    "/auth/signup",
+    "/auth/validate/",
+    "/companies/search",
+  ],
+});
 
 controllers.forEach(({ base, router, public }) => {
   publicRoutes = publicRoutes.concat(public);
-  app.use(`/${base}`, router);
+  app.use(`/${base}`, checkJWT, router);
 });
 
 middlewares.forEach(({ middleware }) => app.use(middleware));

@@ -1,12 +1,28 @@
 <template>
-  <v-container> </v-container>
+  <v-container
+    ><v-row>
+      <container>
+        <company-summary></company-summary>
+      </container>
+      <container>
+        <offers />
+      </container>
+      <container>
+        <team-members />
+      </container>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import Container from "@/components/company/Container";
+import Offers from "@/components/company/Offers";
+import TeamMembers from "@/components/company/TeamMembers";
+import CompanySummary from "@/components/company/CompanySummary";
 
 export default {
   layout: "companies",
+  components: { Container, Offers, TeamMembers, CompanySummary },
   data: () => ({}),
   created() {},
   methods: {},

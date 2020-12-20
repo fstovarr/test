@@ -19,13 +19,22 @@ const index = async (req, res, nex) => {
 };
 
 const create = async (req, res, next) => {
-  await companies.create(req.body);
-  res.status(200).json({});
+  const query = await companies.create(req.body);
+  const company = await companies.findOne({
+    attributes: { exclude: ["createdAt", "updatedAt"] },
+    where: { user_id: query.user_id },
+    include: [
+      { model: job_offers },
+      { model: team_members },
+      { model: locations },
+    ],
+  });
+  res.status(200).json(company);
 };
 
 const search = async (req, res, next) => {
   const result = await companies.searchInAPI({ name: req.query.name });
-  console.log(result)
+  console.log(result);
   res.status(200).json(result);
 };
 

@@ -1,11 +1,11 @@
 export const actions = {
   async create({ commit }, company) {
     try {
-      const { token } = await this.$axios.$post("/company/", company);
+      const createdCompany = await this.$axios.$post("/companies/", company);
 
-      commit("setCompany", company);
+      commit("setCompany", createdCompany);
 
-      return Promise.resolve(token);
+      return Promise.resolve(createdCompany);
     } catch (error) {
       return Promise.reject(error);
     }

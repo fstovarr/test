@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col>
+    <v-col align="center" justify="center">
       <v-card class="login-container pb-4 align-self-center">
         <v-card-text class="pa-10">
           <validation-observer
@@ -127,7 +127,7 @@
         </v-card-text>
       </v-card>
     </v-col>
-    <v-col v-if="isSignup">
+    <v-col v-if="isSignup" align="center" justify="center">
       <v-card>
         <v-card-text>
           <div>
@@ -161,7 +161,7 @@ export default {
       company: undefined,
       username: undefined,
       password: undefined,
-      step: "signup",
+      step: "validation",
       passwordConfirmation: undefined,
       email: undefined,
       type: undefined,
@@ -217,21 +217,15 @@ export default {
     },
     async createUser() {
       try {
-        const {
-          username,
-          password,
-          name,
-          company,
-          country,
-        } = this.$data;
+        const { username, password, name, company, country } = this.$data;
         const token = await this.signup({
           email: username,
           password,
           name,
-          company: company.id,
-          country: country.location_id,
+          company_id: company.id,
+          location_id: country.location_id,
         });
-        this.$router.push(`/${jwt(token).type}/`);
+        this.$router.push(`/company/`);
       } catch (error) {
         console.error(error);
       }
@@ -263,8 +257,7 @@ export default {
           email: this.username,
           password: this.password,
         });
-
-        // this.$router.push(`/${jwt(token).type}/`);
+        this.$router.push(`/company/`);
       } catch (error) {
         console.error(error);
       }

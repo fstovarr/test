@@ -26,7 +26,7 @@
           :key="item.title"
         >
           <v-list-item-avatar>
-            <v-img :src="item.picture"></v-img>
+            <v-img :src="item.picture || defaultCompanyImage"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -40,6 +40,8 @@
 <script>
 export default {
   data: () => ({
+    defaultCompanyImage:
+      "https://static-exp1.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.438/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png",
     firstSearch: false,
     isLoading: false,
     search: null,

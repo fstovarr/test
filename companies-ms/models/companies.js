@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
 
-    static async searchInAPI(params, limit = 10, offset = 0) {
+    static async searchInAPI(params, limit = 5, offset = 0) {
       const {
         data: { results },
       } = await search.post(
