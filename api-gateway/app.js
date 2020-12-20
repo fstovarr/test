@@ -20,8 +20,7 @@ app.listen(process.env.PORT, () => {
 
 let publicRoutes = [];
 
-controllers.forEach(async (controller) => {
-  const { base, router, public } = controller;
+controllers.forEach(({ base, router, public }) => {
   publicRoutes = publicRoutes.concat(public);
   app.use(`/${base}`, router);
 });
@@ -32,7 +31,4 @@ app.use(
   })
 );
 
-middlewares.forEach((mid) => {
-  const { middleware } = mid;
-  app.use(middleware);
-});
+middlewares.forEach(({ middleware }) => app.use(middleware));

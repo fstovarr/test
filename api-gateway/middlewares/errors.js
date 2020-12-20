@@ -1,5 +1,9 @@
 module.exports = function (err, _, res, _) {
+  let status = err.response?.status || 500;
+  if (err.errors) status = 400;
   res
-    .status(err.response.status || 500)
-    .json(err.response.data || { error: "Something broke!" });
+    .status(status)
+    .json(
+      err.response?.data || err.errors || { error: "Internal server error" }
+    );
 };

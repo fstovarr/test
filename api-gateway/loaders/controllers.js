@@ -1,13 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
+const { check, validationResult } = require("express-validator");
 
 const dir = `${path.resolve()}/controllers/`;
 const ext = ".js";
 
-const handleExceptions = (controller) => async (res, req, next) => {
+const handleExceptions = (controller) => async (req, res, next) => {
   try {
-    await controller(res, req, next);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return next({ errors: errors.array() });
+
+    await controller(req, res, next);
   } catch (error) {
     return next(error);
   }
@@ -25,7 +29,12 @@ module.exports = fs
     routes.forEach((route) => {
       if (route.public)
         public.push(`/${base}/${route.path}`.replace("//", "/"));
-      router[route.method](route.path, handleExceptions(route.controller));
+
+      router[route.method](
+        route.path,
+        (route.validators && route.validators(check)) || [],
+        handleExceptions(route.controller)
+      );
     });
 
     return {
