@@ -7,10 +7,11 @@ const ext = ".js";
 module.exports = fs
   .readdirSync(dir)
   .filter((file) => path.extname(file) === ext)
-  .map(async (file) => {
+  .map((file) => {
     const middleware = require(`${dir}/${file}`);
 
     return {
+      name: file,
       middleware,
     };
   });

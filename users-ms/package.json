@@ -7,8 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.8.0",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "merge-descriptors": "^1.0.1",
@@ -23,6 +25,8 @@
     "start": "",
     "dev": "NODE_ENV=development nodemon -L app.js",
     "migrate": "export NODE_ENV=development && sequelize-cli db:migrate",
-    "migrate:undo": "export NODE_ENV=development && sequelize-cli db:migrate:undo"
+    "migrate:undo": "export NODE_ENV=development && sequelize-cli db:migrate:undo:all",
+    "seed": "export NODE_ENV=development && sequelize-cli db:seed:all",
+    "seed:undo": "export NODE_ENV=development && sequelize-cli db:seed:undo:all"
   }
 }
