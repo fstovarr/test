@@ -3,15 +3,22 @@ const Auth = require("../services/auth");
 const authService = new Auth();
 
 const signin = async (req, res, nex) => {
-  const token = await authService.signin(req.body?.email, req.body?.password);
-  res.json(token.data);
+  const { data } = await authService.signin(
+    req.body?.email,
+    req.body?.password
+  );
+  res.json(data);
 };
 
-const signout = (req, res, nex) => {
-  res.json({});
+const signout = async (req, res, nex) => {
+  const { data } = await authService.signup(req.body);
+  res.json(data);
 };
 
-const signup = (req, res, nex) => {};
+const signup = async (req, res, nex) => {
+  const { data } = await authService.signup(req.body);
+  res.json(data);
+};
 
 module.exports = [
   {
@@ -20,10 +27,29 @@ module.exports = [
       body("email").isEmail().normalizeEmail(),
       body("password").isHash(["sha256"]),
     ],
-    public: true,
     controller: signin,
     method: "post",
+    public: true,
   },
-  { path: "/signup", public: true, controller: signup, method: "get" },
-  { path: "/signout", public: true, controller: signout, method: "post" },
+  {
+    path: "/signup",
+    validators: (body) => [
+      body("email").isEmail().normalizeEmail(),
+      body("password").isHash(["sha256"]),
+      body("first_name").not().isEmpty(),
+    ],
+    public: true,
+    controller: signup,
+    method: "post",
+  },
+  {
+    path: "/signout",
+    validators: (body) => [
+      body("email").isEmail().normalizeEmail(),
+      body("password").isHash(["sha256"]),
+    ],
+    public: true,
+    controller: signout,
+    method: "post",
+  },
 ];

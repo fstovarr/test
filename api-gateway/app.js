@@ -26,7 +26,7 @@ controllers.forEach(({ base, router, public }) => {
 });
 
 app.use(
-  jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }).unless({
+  jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS384"] }).unless({
     path: publicRoutes,
   })
 );
