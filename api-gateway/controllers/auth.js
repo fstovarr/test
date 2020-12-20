@@ -38,9 +38,9 @@ module.exports = [
       body("password").isHash(["sha256"]),
       body("first_name").not().isEmpty(),
     ],
-    public: true,
     controller: signup,
     method: "post",
+    public: true,
   },
   {
     path: "/signout",

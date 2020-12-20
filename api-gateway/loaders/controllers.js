@@ -10,7 +10,6 @@ const handleExceptions = (controller) => async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return next({ errors: errors.array() });
-
     await controller(req, res, next);
   } catch (error) {
     return next(error);

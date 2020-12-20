@@ -20,6 +20,7 @@ module.exports = {
           username: "am.serranoariza",
           createdAt: new Date(),
           updatedAt: new Date(),
+          weight: 0.0,
         },
         {
           team_member_id: 2,
@@ -27,6 +28,7 @@ module.exports = {
           username: "andresgfranco",
           createdAt: new Date(),
           updatedAt: new Date(),
+          weight: 1.0,
         },
         {
           team_member_id: 3,
@@ -34,6 +36,7 @@ module.exports = {
           username: "davidvelasquezm",
           createdAt: new Date(),
           updatedAt: new Date(),
+          weight: 2.0,
         },
       ],
       {}

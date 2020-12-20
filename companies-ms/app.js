@@ -20,12 +20,11 @@ app.listen(process.env.PORT, () => {
 });
 
 controllers.forEach(({ base, router }) => {
+  console.log(">>>>>> ", base);
   app.use(`/${base}`, router);
 });
 
-middlewares.forEach(({ middleware }) => {
-  app.use(middleware);
-});
+middlewares.forEach(({ middleware }) => app.use(middleware));
 
 const worker = require("./workers/worker");
 

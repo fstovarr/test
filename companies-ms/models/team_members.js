@@ -28,8 +28,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   team_members.init(
     {
-      username: { type: DataTypes.STRING, primaryKey: true },
+      team_member_id: { type: DataTypes.STRING, primaryKey: true },
+      username: DataTypes.STRING,
       company_id: DataTypes.INTEGER,
+      weight: DataTypes.DOUBLE,
     },
     {
       sequelize,

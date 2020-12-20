@@ -17,6 +17,11 @@ module.exports = {
             model: { tableName: "locations" },
           },
         },
+        description: {
+          type: Sequelize.TEXT,
+          allowNull: true,
+          defaultValue: true,
+        },
         user_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
@@ -37,6 +42,7 @@ module.exports = {
       await queryInterface.addIndex("companies", ["user_id"], {
         indexName: "user_index",
         transaction,
+        unique: true
       });
 
       await queryInterface.addIndex("companies", ["location_id"], {

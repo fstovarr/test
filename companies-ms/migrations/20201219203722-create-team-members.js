@@ -30,6 +30,11 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE,
         },
+        weight: {
+          allowNull: false,
+          defaultValue: 0.0,
+          type: Sequelize.DOUBLE,
+        },
       });
       await queryInterface.addIndex("team_members", ["username"], {
         indexName: "username_index",

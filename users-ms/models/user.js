@@ -15,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       // console.log("ASSOCIATE ", models);
       Users.hasMany(models.emails_users, {
         foreignKey: "user_id",
-        targetKey: "user_id",
-        constraints: false,
-        foreignKeyConstraint: false
+        targetKey: "user_id"
       });
     }
 

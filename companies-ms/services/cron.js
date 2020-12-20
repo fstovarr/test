@@ -94,15 +94,13 @@ const indexJobOffers = async () => {
     counterCompanies++;
     let company;
     for (company of companiesLs) {
-      const lastOffer = await updateJobOffers(company, BATCH_SIZE);
-      //   updateTeamMembers(lastOffer, company);
+      await updateJobOffers(company, BATCH_SIZE);
     }
   }
   console.log("---- END INDEX JOB OFFERS ----");
 };
 
 (async () => {
-  console.log("SCHEDULE");
-  //   schedule.scheduleJob("* * * * *", async () => );
-  await indexJobOffers();
+  console.log("WORKER INITIALIZED");
+  schedule.scheduleJob("*/10 * * * *", async () => await indexJobOffers());
 })();

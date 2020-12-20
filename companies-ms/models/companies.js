@@ -8,7 +8,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      companies.hasMany(models.job_offers, {
+        foreignKey: "company_id",
+        targetKey: "company_id",
+      });
+      companies.hasMany(models.team_members, {
+        foreignKey: "company_id",
+        targetKey: "company_id",
+      });
+      companies.belongsTo(models.locations, {
+        foreignKey: "location_id",
+        sourceKey: "location_id",
+      });
     }
   }
   companies.init(
@@ -19,6 +30,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       location_id: DataTypes.INTEGER,
       reputation_avg: DataTypes.DOUBLE,
+      description: DataTypes.TEXT,
+      user_id: DataTypes.INTEGER,
     },
     {
       sequelize,
