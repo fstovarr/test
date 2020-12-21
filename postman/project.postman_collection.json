@@ -6,6 +6,235 @@
 	},
 	"item": [
 		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fabiostovarr@gmail.com\",\n    \"password\": \"5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gateway}}/auth/signin",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fefe@sasasasdasagmail.com\",\n    \"password\": \"5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8\",\n    \"first_name\": \"Fabio\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gateway}}/auth/signup",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fabiostovarr@gmail.coasdam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gateway}}/auth/validate/",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"auth",
+								"validate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-gateway}}/companies/search?name=bunny",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"companies",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bunny"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NiwiZmlyc3RfbmFtZSI6InNhZGFzZGFzZGFzZCIsImlhdCI6MTYwODUyNjU3NCwiZXhwIjoxNjA4NTY5Nzc0LCJhdWQiOiJmcm9udC50b3JyZS5jbyIsImlzcyI6InRlc3QudG9ycmUuY28iLCJzdWIiOiJhdXRoIn0.OLCsOpST5kW0jwZY_Dfdken6baXeZbwYKaYh3TCS_fnulP8zdbwuWxYcSGPtfwA_",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": 1,\n    \"company_id\": 279711,\n    \"description\": \"The best company in da world\",\n    \"picture\": \"https://res.cloudinary.com/torre-technologies-co/image/upload/v1600929840/origin/bio/organizations/Bunny_Studio_bq79wl.jpg\",\n    \"name\": \"Testing company\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gateway}}/companies/",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"companies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NSwiZmlyc3RfbmFtZSI6InRvZWZsIiwiaWF0IjoxNjA4NTI1NDk2LCJleHAiOjE2MDg1Njg2OTYsImF1ZCI6ImZyb250LnRvcnJlLmNvIiwiaXNzIjoidGVzdC50b3JyZS5jbyIsInN1YiI6ImF1dGgifQ.VevTlsPzXuZmPoUzgzeeTe3kvpZAqmtMOq-q5vaihTmb_63ef--Upeh__urEdKA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-gateway}}/companies/",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"companies",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "Index",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozOSwiZmlyc3RfbmFtZSI6IkZhYmlvIiwiaWF0IjoxNjA4NDU5MTEzLCJleHAiOjE2MDg1MDIzMTMsImF1ZCI6ImZyb250LnRvcnJlLmNvIiwiaXNzIjoidGVzdC50b3JyZS5jbyIsInN1YiI6ImF1dGgifQ.40cTBPTvdWFPjZctSPy5IiGlF0ifD9qIxGDjLHUzN-CvrrdZPWcrHg_DM36U3zCh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gateway}}/locations/",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"locations",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Bio info",
 			"request": {
 				"method": "GET",
@@ -52,7 +281,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": ""
+							"value": "6Wa138W0"
 						}
 					]
 				}
@@ -66,7 +295,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"or\": [\n        {\n            \"skill/role\": {\n                \"text\": \"papa\",\n                \"experience\": \"potential-to-develop\"\n            }\n        },\n        {\n            \"status\": {\n                \"code\": \"closed\"\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"or\": [\n        {\n            \"organization\": {\n                \"code\": 573462\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +303,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://search.torre.co/opportunities/_search/?aggregate=true&size=1",
+					"raw": "https://search.torre.co/opportunities/_search/?offset=0",
 					"protocol": "https",
 					"host": [
 						"search",
@@ -88,17 +317,13 @@
 					],
 					"query": [
 						{
-							"key": "offset",
-							"value": "offset",
+							"key": "page",
+							"value": "2",
 							"disabled": true
 						},
 						{
-							"key": "aggregate",
-							"value": "true"
-						},
-						{
-							"key": "size",
-							"value": "1"
+							"key": "offset",
+							"value": "0"
 						}
 					]
 				}
@@ -150,6 +375,35 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a8708300-1fd4-4faf-9d14-713252842f5e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3ebbff7c-fb85-42c5-a3da-c67b0e5ddb7d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3918f367-3bd5-4c9c-a09f-2f92b8ded6e2",
+			"key": "api-gateway",
+			"value": "localhost:8080"
 		}
 	],
 	"protocolProfileBehavior": {}
