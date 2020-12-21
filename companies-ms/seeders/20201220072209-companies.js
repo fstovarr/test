@@ -11,6 +11,9 @@ module.exports = {
           user_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
+          name: "Bunny Studio",
+          picture:
+            "https://res.cloudinary.com/torre-technologies-co/image/upload/v1600929840/origin/bio/organizations/Bunny_Studio_bq79wl.jpg",
         },
         {
           company_id: 533386,
@@ -18,6 +21,7 @@ module.exports = {
           user_id: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
+          name: "Rappi",
         },
       ],
       {}

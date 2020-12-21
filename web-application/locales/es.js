@@ -12,7 +12,22 @@ export default {
     "password-confirmation": "Confirmación de contraseña",
     company_country: "País de la compañía",
   },
+  company: {
+    reputation: "Reputación",
+    team_members: "Equipo",
+    some_team_members: "Algunos miembros de tu equipo",
+    join_date: "Te uniste el ",
+    your_offers: "Ofertas que has publicado",
+    reputation_explanation:
+      "Tu reputación se calcula como el promedio de los pesos de los miembros de tu equipo",
+  },
   common: {
+    closed: "Cerrada",
+    open: "Abierta",
+    internships: "Práctica profesional",
+    "part-time-employment": "Trabajo a medio tiempo",
+    "freelance-gigs": "Trabajo como independiente",
+    "full-time-employment": "Empleo a tiempo completo",
     torre_companies: "Companies in Torre",
     no_results:
       "No se encontraron resultados. Intenta buscar por otra palabra clave.",

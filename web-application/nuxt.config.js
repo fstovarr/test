@@ -95,7 +95,7 @@ module.exports = {
     customVariables: ["~/assets/variables.scss"],
     theme: {
       dark: true,
-    },
+    }
   },
   /*
    ** Build configuration

@@ -1,10 +1,10 @@
-const http = require("../lib/http");
+const { search, api } = require("../lib/http");
 
 module.exports = class Opportunities {
   static async findByCompanyCode(code, limit = 50, offset = 10) {
     const {
       data: { results },
-    } = await http.search.post(
+    } = await search.post(
       "/opportunities/_search/",
       {
         or: [{ organization: { code } }],
@@ -17,5 +17,13 @@ module.exports = class Opportunities {
       }
     );
     return results;
+  }
+
+  static async getExtraInfo(id) {
+    const {
+      data: { slug, attachments },
+    } = await api.get(`/opportunities/${id}`);
+    const cover = (attachments[0] || {}).address;
+    return { slug, cover };
   }
 };

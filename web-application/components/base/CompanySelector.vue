@@ -40,8 +40,7 @@
 <script>
 export default {
   data: () => ({
-    defaultCompanyImage:
-      "https://static-exp1.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.438/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png",
+    defaultCompanyImage: require("~/assets/img/default-company.png"),
     firstSearch: false,
     isLoading: false,
     search: null,
@@ -72,7 +71,6 @@ export default {
       }
       this.firstSearch = true;
       this.isLoading = false;
-      console.log(this.companies);
     },
   },
 };

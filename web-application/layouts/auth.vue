@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-content class="background-container">
-      <v-app-bar :clipped-left="clipped" fixed app>
+      <v-app-bar fixed app>
         <language-selector style="" />
       </v-app-bar>
       <v-container fill-height align-content-center justify-center>

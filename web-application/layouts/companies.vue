@@ -1,8 +1,11 @@
 <template>
   <v-app dark>
     <v-content class="background-container">
-      <v-app-bar :clipped-left="clipped" fixed app>
-        <language-selector style="" />
+      <v-app-bar fixed app>
+        <div></div>
+        <language-selector class="ml-10" />
+        <v-spacer></v-spacer>
+        <menu-top-bar />
       </v-app-bar>
       <v-container fill-height align-content-center justify-center>
         <nuxt />
@@ -21,9 +24,11 @@
 
 <script>
 import LanguageSelector from "@/components/LanguageSelector";
+import MenuTopBar from "@/components/base/MenuTopBar";
 
 export default {
-  components: { LanguageSelector },
+  components: { LanguageSelector, MenuTopBar },
+  middleware: "auth",
   data() {
     return {
       fixed: true,
@@ -32,17 +37,8 @@ export default {
   },
 };
 </script>
-<style>
-.background-container {
-  background-color: rgba(0, 0, 0, 0.12);
-}
+<style scoped>
 .footer-title {
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.6);
+  color: #fff !important;
 }
 </style>

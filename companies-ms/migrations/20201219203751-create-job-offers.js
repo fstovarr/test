@@ -24,6 +24,18 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      objective: {
+        type: Sequelize.STRING,
+      },
+      type: {
+        type: Sequelize.STRING,
+      },
+      slug: {
+        type: Sequelize.STRING,
+      },
+      cover: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

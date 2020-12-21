@@ -159,8 +159,8 @@ export default {
     return {
       country: { location_id: 47, name: "COLOMBIA", code: "CO" },
       company: undefined,
-      username: undefined,
-      password: undefined,
+      username: "fabiostovarr@gmail.com",
+      password: "password",
       step: "validation",
       passwordConfirmation: undefined,
       email: undefined,
@@ -189,18 +189,12 @@ export default {
       return this.step === "validation";
     },
   },
-  watch: {
-    country(val) {
-      console.log("CHANGE ", val);
-    },
-  },
   methods: {
     ...mapActions({
       login: "auth/login",
       signup: "auth/signup",
     }),
     buttonPressed() {
-      console.log(this.step);
       switch (this.step) {
         case "signup":
           this.createUser();

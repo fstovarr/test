@@ -7,7 +7,6 @@ Object.keys(rules).forEach((rule) => {
 })
 
 extend('decimal', (n) => {
-  console.log(n)
   if (isNaN(n)) return false
   const RE = /^-{0,1}\d*\.{0,1}\d+$/
   return RE.test(n)

@@ -7,7 +7,6 @@ const index = async (req, res, nex) => {
 
 const create = async (req, res, next) => {
   const { user_id } = req.user;
-  console.log("USER_ID ", user_id, req.body);
   const response = await Company.create({ ...req.body, user_id });
   res.json(response);
 };
@@ -27,6 +26,8 @@ module.exports = [
       body("location_id").isNumeric({ no_symbols: true }),
       body("company_id").isNumeric({ no_symbols: true }),
       body("description"),
+      body("picture"),
+      body("name"),
     ],
   },
   { path: "/", method: "get", controller: index },

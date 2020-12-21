@@ -22,6 +22,10 @@ module.exports = {
             model: { tableName: "companies" },
           },
         },
+        name: {
+          allowNull: false,
+          type: Sequelize.STRING
+        },
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE,
@@ -34,6 +38,10 @@ module.exports = {
           allowNull: false,
           defaultValue: 0.0,
           type: Sequelize.DOUBLE,
+        },
+        picture: {
+          allowNull: true,
+          type: Sequelize.STRING,
         },
       });
       await queryInterface.addIndex("team_members", ["username"], {

@@ -2,10 +2,10 @@ const schedule = require("node-schedule");
 const Opportunities = require("../models/opportunities");
 
 const {
+  sequelize,
   companies,
   job_offers,
   team_members,
-  sequelize,
 } = require("../models/index");
 
 const updateJobOffers = async (company, BATCH_SIZE = 50) => {
@@ -29,12 +29,16 @@ const updateJobOffers = async (company, BATCH_SIZE = 50) => {
 
       for (opportunity of opportunities) {
         await updateTeamMembers(opportunity, company);
+        const info = await Opportunities.getExtraInfo(opportunity.id);
 
         try {
           await job_offers.upsert(
             {
+              ...info,
               company_id: company.company_id,
               job_offer_id: opportunity.id,
+              objective: opportunity.objective,
+              type: opportunity.type,
               active: true,
               opened: opportunity.status == "open",
             },
@@ -99,7 +103,26 @@ const indexJobOffers = async () => {
   console.log("---- END INDEX JOB OFFERS ----");
 };
 
+const updateReputation = async () => {
+  console.log("##### START UPDATE REPUTATION ####");
+  const avgs = await team_members.findAll({
+    attributes: [
+      "company_id",
+      [sequelize.fn("AVG", sequelize.col("weight")), "reputation_avg"],
+    ],
+    group: ["company_id"],
+  });
+  for (let avg of avgs) {
+    const { reputation_avg, company_id } = avg.dataValues;
+    companies.update({ reputation_avg }, { where: { company_id } });
+  }
+
+  console.log("---- END UPDATE REPUTATION ----");
+};
+
 (async () => {
   console.log("WORKER INITIALIZED");
-  schedule.scheduleJob("*/10 * * * *", async () => await indexJobOffers());
+
+  schedule.scheduleJob("*/2 * * * *", async () => await indexJobOffers());
+  schedule.scheduleJob("*/3 * * * *", async () => await updateReputation());
 })();

@@ -19,7 +19,9 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/company/index.js'), 'company/index.js')
+  resolveStoreModules(require('../store/offers/index.js'), 'offers/index.js')
+  resolveStoreModules(require('../store/members/index.js'), 'members/index.js')
+  resolveStoreModules(require('../store/companies/index.js'), 'companies/index.js')
   resolveStoreModules(require('../store/auth/index.js'), 'auth/index.js')
 
   // If the environment supports hot reloading...
@@ -28,7 +30,9 @@ let store = {};
     // Whenever any Vuex module is updated...
     module.hot.accept([
       '../store/index.js',
-      '../store/company/index.js',
+      '../store/offers/index.js',
+      '../store/members/index.js',
+      '../store/companies/index.js',
       '../store/auth/index.js',
     ], () => {
       // Update `root.modules` with the latest definitions.

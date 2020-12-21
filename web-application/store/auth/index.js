@@ -39,12 +39,10 @@ export const actions = {
         email: email,
       });
 
-      console.log(token);
-
       commit("setToken", token);
 
       await dispatch(
-        "company/create",
+        "companies/create",
         {
           location_id,
           company_id,
@@ -60,8 +58,10 @@ export const actions = {
   },
   async logout({ commit }) {
     try {
-      await Promise.resolve();
       commit("removeToken");
+      commit("offers/clean", { root: true });
+      commit("companies/clean", { root: true });
+      commit("members/clean", { root: true });
       return Promise.resolve();
     } catch (error) {
       return Promise.reject(error);
@@ -72,10 +72,6 @@ export const actions = {
 // import jwt from 'jwt-decode'
 export const getters = {
   isAuthenticated: (state) => state.token !== undefined,
-  // userType: (state) => {
-  //   if (state.token) return jwt(state.token).type
-  //   else return 'unauth'
-  // }
 };
 
 export const mutations = {

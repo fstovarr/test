@@ -12,4 +12,8 @@ module.exports = {
     baseURL: process.env.URL_TORRE_BIO,
     timeout: 1000,
   }),
+  api: axios.create({
+    baseURL: process.env.URL_TORRE_API,
+    timeout: 1000,
+  }),
 };

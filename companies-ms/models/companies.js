@@ -62,6 +62,8 @@ module.exports = (sequelize, DataTypes) => {
       reputation_avg: DataTypes.DOUBLE,
       description: DataTypes.TEXT,
       user_id: DataTypes.INTEGER,
+      name: DataTypes.STRING,
+      picture: DataTypes.STRING,
     },
     {
       sequelize,

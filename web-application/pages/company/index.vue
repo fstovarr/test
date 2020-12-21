@@ -1,20 +1,19 @@
 <template>
   <v-container
     ><v-row>
-      <container>
-        <company-summary></company-summary>
+      <container :md="4">
+        <company-summary :company="company"></company-summary>
       </container>
-      <container>
-        <offers />
-      </container>
-      <container>
-        <team-members />
+      <container :md="8">
+        <offers :job-offers="offers"></offers>
       </container>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 import Container from "@/components/company/Container";
 import Offers from "@/components/company/Offers";
 import TeamMembers from "@/components/company/TeamMembers";
@@ -24,8 +23,22 @@ export default {
   layout: "companies",
   components: { Container, Offers, TeamMembers, CompanySummary },
   data: () => ({}),
-  created() {},
-  methods: {},
+  async created() {
+    const companies = await this.getCompanies();
+    console.log(this.offers);
+    console.log(this.members);
+    console.log(this.company);
+  },
+  computed: mapState({
+    company: (state) => (state.companies || {}).company,
+    offers: (state) => (state.offers || {}).offers,
+    members: (state) => (state.members || {}).members,
+  }),
+  methods: {
+    ...mapActions({
+      getCompanies: "companies/fetch",
+    }),
+  },
 };
 </script>
 <style scoped>

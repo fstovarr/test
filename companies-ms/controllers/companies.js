@@ -3,14 +3,26 @@ const {
   job_offers,
   team_members,
   locations,
+  Sequelize,
 } = require("../models/index");
+
+const Op = Sequelize.Op;
 
 const index = async (req, res, nex) => {
   const company = await companies.findOne({
-    attributes: { exclude: ["createdAt", "updatedAt"] },
-    where: { user_id: req.params.id },
+    attributes: { exclude: ["updatedAt"] },
+    where: {
+      user_id: req.params.id,
+    },
     include: [
-      { model: job_offers },
+      {
+        model: job_offers,
+        where: {
+          slug: {
+            [Op.not]: null,
+          },
+        },
+      },
       { model: team_members },
       { model: locations },
     ],

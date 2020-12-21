@@ -22,6 +22,8 @@ module.exports = {
           allowNull: true,
           defaultValue: true,
         },
+        name: { type: Sequelize.STRING, allowNull: true },
+        picture: { type: Sequelize.STRING },
         user_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
@@ -42,7 +44,7 @@ module.exports = {
       await queryInterface.addIndex("companies", ["user_id"], {
         indexName: "user_index",
         transaction,
-        unique: true
+        unique: true,
       });
 
       await queryInterface.addIndex("companies", ["location_id"], {

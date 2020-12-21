@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       company_id: DataTypes.INTEGER,
       active: DataTypes.BOOLEAN,
       opened: DataTypes.BOOLEAN,
+      objective: DataTypes.STRING,
+      type: DataTypes.STRING,
+      slug: DataTypes.STRING,
+      cover: DataTypes.STRING,
     },
     {
       sequelize,
