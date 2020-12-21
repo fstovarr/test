@@ -8,7 +8,7 @@ module.exports = {
   env: {
     NUXT_PORT: process.env.API_PORT || "5555",
     apiHost: process.env.API_PORT || "8080",
-    apiUrl: process.env.API_HOST || "api-gateway",
+    apiUrl: process.env.API_HOST || "0.0.0.0",
   },
   /*
    ** Headers of the page
@@ -84,7 +84,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    host: process.env.API_HOST || "api-gateway",
+    host: process.env.API_HOST || "0.0.0.0",
     port: process.env.API_PORT || "8080",
   },
   /*
