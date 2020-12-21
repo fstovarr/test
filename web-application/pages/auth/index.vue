@@ -144,7 +144,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import jwt from "jwt-decode";
 import Logo from "@/components/Logo.vue";
 
@@ -168,7 +168,13 @@ export default {
       name: undefined,
     };
   },
+  created() {
+    if (this.isAuthenticated) this.$router.replace("/company");
+  },
   computed: {
+    ...mapGetters({
+      isAuthenticated: "auth/isAuthenticated",
+    }),
     buttonTitle() {
       switch (this.step) {
         case "signup":
@@ -215,8 +221,8 @@ export default {
         const token = await this.signup({
           email: username,
           password,
-          name,
-          company_id: company.id,
+          name: name,
+          company,
           location_id: country.location_id,
         });
         this.$router.push(`/company/`);

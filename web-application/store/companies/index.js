@@ -14,6 +14,7 @@ export const actions = {
     try {
       const company = await this.$axios.$get("/companies");
       commit("setCompany", company);
+      console.log("COMPANY ", company);
       commit("members/setMembers", company.team_members, { root: true });
       commit("offers/setOffers", company.job_offers, { root: true });
       return company;

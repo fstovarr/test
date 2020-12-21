@@ -24,10 +24,7 @@ export default {
   components: { Container, Offers, TeamMembers, CompanySummary },
   data: () => ({}),
   async created() {
-    const companies = await this.getCompanies();
-    console.log(this.offers);
-    console.log(this.members);
-    console.log(this.company);
+    await this.getCompanies();
   },
   computed: mapState({
     company: (state) => (state.companies || {}).company,

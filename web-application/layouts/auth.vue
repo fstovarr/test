@@ -24,6 +24,7 @@ import LanguageSelector from "@/components/LanguageSelector";
 
 export default {
   components: { LanguageSelector },
+  middleware: "auth",
   data() {
     return {
       fixed: true,

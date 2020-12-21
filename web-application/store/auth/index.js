@@ -25,7 +25,7 @@ export const actions = {
   },
   async signup(
     { commit, dispatch },
-    { password, name, email, location_id, company_id, description }
+    { password, name, email, location_id, company, description }
   ) {
     try {
       const password_digest = sha256
@@ -44,8 +44,9 @@ export const actions = {
       await dispatch(
         "companies/create",
         {
+          ...company,
           location_id,
-          company_id,
+          company_id: company.id,
           description,
         },
         { root: true }
@@ -53,10 +54,11 @@ export const actions = {
 
       return Promise.resolve(token);
     } catch (error) {
+      dispatch("signout");
       return Promise.reject(error);
     }
   },
-  async logout({ commit }) {
+  async signout({ commit }) {
     try {
       commit("removeToken");
       commit("offers/clean", { root: true });

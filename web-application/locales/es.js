@@ -28,9 +28,11 @@ export default {
     "part-time-employment": "Trabajo a medio tiempo",
     "freelance-gigs": "Trabajo como independiente",
     "full-time-employment": "Empleo a tiempo completo",
-    torre_companies: "Companies in Torre",
+    torre_companies: "Empresas en Torre",
     no_results:
       "No se encontraron resultados. Intenta buscar por otra palabra clave.",
+    not_found:
+      "No se encontraron resultados. Es posible que tome un par de minutos la sincronización de tu cuenta con los datos de Torre.",
     country: "País",
     companies: "Compañías",
     login: "Iniciar sesión",
