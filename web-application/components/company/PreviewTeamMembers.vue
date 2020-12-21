@@ -1,5 +1,5 @@
 <template>
-  <v-row class="d-flex flex-row" v-if="teamMember && teamMember.length > 0">
+  <v-row class="d-flex flex-row" v-if="members && members.length > 0">
     <v-col
       md="3"
       v-for="(member, index) in selectedMembers"

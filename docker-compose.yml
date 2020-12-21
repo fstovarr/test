@@ -1,6 +1,18 @@
 version: "3.3"
 
 services:
+  web-application:
+    container_name: web-app
+    image: web-app
+    build: "web-application/"
+    volumes:
+      - ./web-application/:/app
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    depends_on:
+      - api-gateway
   api-gateway:
     container_name: api-gateway
     image: api-gateway

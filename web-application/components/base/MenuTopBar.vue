@@ -28,7 +28,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      items: [{ key: "signout", name: this.$t("common.signout") }],
+      items: [{ key: "signout", name: this.$t("common.logout") }],
       title: this.$t("app.name"),
     };
   },

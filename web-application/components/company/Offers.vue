@@ -22,7 +22,7 @@ export default {
     "job-offers": {
       type: Array,
     },
-  },
+  }
 };
 </script>
 <style scoped>

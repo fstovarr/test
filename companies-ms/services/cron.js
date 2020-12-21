@@ -62,7 +62,6 @@ const updateReputation = async () => {
 
 (async () => {
   console.log("WORKER INITIALIZED");
-
-  // schedule.scheduleJob("* * * * *", async () => await indexJobOffers());
-  // schedule.scheduleJob("*/2 * * * *", async () => await updateReputation());
+  schedule.scheduleJob("*/5 * * * *", async () => await indexJobOffers());
+  schedule.scheduleJob("*/6 * * * *", async () => await updateReputation());
 })();
